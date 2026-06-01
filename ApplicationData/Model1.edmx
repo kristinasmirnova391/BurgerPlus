@@ -1,0 +1,1007 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище BurgerPlusModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Edinica_Izmerenia">
+          <Key>
+            <PropertyRef Name="Id_Edinic" />
+          </Key>
+          <Property Name="Id_Edinic" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Price_Materials">
+          <Key>
+            <PropertyRef Name="Id_Price_Mat" />
+          </Key>
+          <Property Name="Id_Price_Mat" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_ProizvMat" Type="int" Nullable="false" />
+          <Property Name="Price" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Price_Product">
+          <Key>
+            <PropertyRef Name="Id_Price_Product" />
+          </Key>
+          <Property Name="Id_Price_Product" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_ProizProduct" Type="int" Nullable="false" />
+          <Property Name="Cena" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Proizvod_Materials">
+          <Key>
+            <PropertyRef Name="Id_ProizvMat" />
+          </Key>
+          <Property Name="Id_ProizvMat" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Kode" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Kolichestvo" Type="float" Nullable="false" />
+          <Property Name="Id_Edinic" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Proizvod_Product">
+          <Key>
+            <PropertyRef Name="Id_ProizProduct" />
+          </Key>
+          <Property Name="Id_ProizProduct" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Kode" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Kolichestvo" Type="int" Nullable="false" />
+          <Property Name="Id_Edinic" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Rasschet_Stoimosti_Product">
+          <Key>
+            <PropertyRef Name="Id_Rasshet" />
+          </Key>
+          <Property Name="Id_Rasshet" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_ProizProduct" Type="int" Nullable="false" />
+          <Property Name="Id_ProizvMat" Type="int" Nullable="false" />
+          <Property Name="Id_Edinic" Type="int" Nullable="false" />
+          <Property Name="Kolichestvo" Type="float" Nullable="false" />
+          <Property Name="Cena" Type="money" Nullable="false" />
+          <Property Name="Stoimost" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="Id_Role" />
+          </Key>
+          <Property Name="Id_Role" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Specifikacia_Materials">
+          <Key>
+            <PropertyRef Name="Id_SpecMat" />
+          </Key>
+          <Property Name="Id_SpecMat" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_Specifikacia" Type="int" Nullable="false" />
+          <Property Name="Id_ProizvMat" Type="int" Nullable="false" />
+          <Property Name="Id_Edinic" Type="int" Nullable="false" />
+          <Property Name="Kolichestvo" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Specifikacia_Product">
+          <Key>
+            <PropertyRef Name="Id_Specifikacia" />
+          </Key>
+          <Property Name="Id_Specifikacia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_ProizProduct" Type="int" Nullable="false" />
+          <Property Name="Cena" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="Status_Id" />
+          </Key>
+          <Property Name="Status_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id_Users" />
+          </Key>
+          <Property Name="Id_Users" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_Role" Type="int" Nullable="false" />
+          <Property Name="Last_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="First_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Login" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+          <Property Name="Patronymic" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Status_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Zakaz_Pokypatel">
+          <Key>
+            <PropertyRef Name="Id_Zakaz" />
+          </Key>
+          <Property Name="Id_Zakaz" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Kolichestvo" Type="int" Nullable="false" />
+          <Property Name="Id_Edinic" Type="int" Nullable="false" />
+          <Property Name="Cena" Type="money" Nullable="false" />
+          <Property Name="Summa" Type="money" Nullable="false" />
+          <Property Name="Id_Zakazchika" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Zakazchiki">
+          <Key>
+            <PropertyRef Name="Id_Zakazchik" />
+          </Key>
+          <Property Name="Id_Zakazchik" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Inn" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Gorod" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Street" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Salesman" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Buyer" Type="float" Nullable="false" />
+          <Property Name="Id_Users" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Price_Materials_Proizvod_Materials">
+          <End Role="Proizvod_Materials" Type="Self.Proizvod_Materials" Multiplicity="1" />
+          <End Role="Price_Materials" Type="Self.Price_Materials" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proizvod_Materials">
+              <PropertyRef Name="Id_ProizvMat" />
+            </Principal>
+            <Dependent Role="Price_Materials">
+              <PropertyRef Name="Id_ProizvMat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Price_Product_Proizvod_Product">
+          <End Role="Proizvod_Product" Type="Self.Proizvod_Product" Multiplicity="1" />
+          <End Role="Price_Product" Type="Self.Price_Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proizvod_Product">
+              <PropertyRef Name="Id_ProizProduct" />
+            </Principal>
+            <Dependent Role="Price_Product">
+              <PropertyRef Name="Id_ProizProduct" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Proizvod_Materials_Edinica_Izmerenia">
+          <End Role="Edinica_Izmerenia" Type="Self.Edinica_Izmerenia" Multiplicity="1" />
+          <End Role="Proizvod_Materials" Type="Self.Proizvod_Materials" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Edinica_Izmerenia">
+              <PropertyRef Name="Id_Edinic" />
+            </Principal>
+            <Dependent Role="Proizvod_Materials">
+              <PropertyRef Name="Id_Edinic" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Proizvod_Product_Edinica_Izmerenia">
+          <End Role="Edinica_Izmerenia" Type="Self.Edinica_Izmerenia" Multiplicity="1" />
+          <End Role="Proizvod_Product" Type="Self.Proizvod_Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Edinica_Izmerenia">
+              <PropertyRef Name="Id_Edinic" />
+            </Principal>
+            <Dependent Role="Proizvod_Product">
+              <PropertyRef Name="Id_Edinic" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rasschet_Stoimosti_Product_Edinica_Izmerenia">
+          <End Role="Edinica_Izmerenia" Type="Self.Edinica_Izmerenia" Multiplicity="1" />
+          <End Role="Rasschet_Stoimosti_Product" Type="Self.Rasschet_Stoimosti_Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Edinica_Izmerenia">
+              <PropertyRef Name="Id_Edinic" />
+            </Principal>
+            <Dependent Role="Rasschet_Stoimosti_Product">
+              <PropertyRef Name="Id_Edinic" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rasschet_Stoimosti_Product_Proizvod_Materials">
+          <End Role="Proizvod_Materials" Type="Self.Proizvod_Materials" Multiplicity="1" />
+          <End Role="Rasschet_Stoimosti_Product" Type="Self.Rasschet_Stoimosti_Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proizvod_Materials">
+              <PropertyRef Name="Id_ProizvMat" />
+            </Principal>
+            <Dependent Role="Rasschet_Stoimosti_Product">
+              <PropertyRef Name="Id_ProizvMat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rasschet_Stoimosti_Product_Proizvod_Product">
+          <End Role="Proizvod_Product" Type="Self.Proizvod_Product" Multiplicity="1" />
+          <End Role="Rasschet_Stoimosti_Product" Type="Self.Rasschet_Stoimosti_Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proizvod_Product">
+              <PropertyRef Name="Id_ProizProduct" />
+            </Principal>
+            <Dependent Role="Rasschet_Stoimosti_Product">
+              <PropertyRef Name="Id_ProizProduct" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Specifikacia_Materials_Edinica_Izmerenia">
+          <End Role="Edinica_Izmerenia" Type="Self.Edinica_Izmerenia" Multiplicity="1" />
+          <End Role="Specifikacia_Materials" Type="Self.Specifikacia_Materials" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Edinica_Izmerenia">
+              <PropertyRef Name="Id_Edinic" />
+            </Principal>
+            <Dependent Role="Specifikacia_Materials">
+              <PropertyRef Name="Id_Edinic" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Specifikacia_Materials_Proizvod_Materials">
+          <End Role="Proizvod_Materials" Type="Self.Proizvod_Materials" Multiplicity="1" />
+          <End Role="Specifikacia_Materials" Type="Self.Specifikacia_Materials" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proizvod_Materials">
+              <PropertyRef Name="Id_ProizvMat" />
+            </Principal>
+            <Dependent Role="Specifikacia_Materials">
+              <PropertyRef Name="Id_ProizvMat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Specifikacia_Materials_Specifikacia_Product">
+          <End Role="Specifikacia_Product" Type="Self.Specifikacia_Product" Multiplicity="1" />
+          <End Role="Specifikacia_Materials" Type="Self.Specifikacia_Materials" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Specifikacia_Product">
+              <PropertyRef Name="Id_Specifikacia" />
+            </Principal>
+            <Dependent Role="Specifikacia_Materials">
+              <PropertyRef Name="Id_Specifikacia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Specifikacia_Product_Proizvod_Product">
+          <End Role="Proizvod_Product" Type="Self.Proizvod_Product" Multiplicity="1" />
+          <End Role="Specifikacia_Product" Type="Self.Specifikacia_Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proizvod_Product">
+              <PropertyRef Name="Id_ProizProduct" />
+            </Principal>
+            <Dependent Role="Specifikacia_Product">
+              <PropertyRef Name="Id_ProizProduct" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_Roles">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="Id_Role" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="Id_Role" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_Status">
+          <End Role="Status" Type="Self.Status" Multiplicity="1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="Status_Id" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="Status_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Zakaz_Pokypatel_Edinica_Izmerenia">
+          <End Role="Edinica_Izmerenia" Type="Self.Edinica_Izmerenia" Multiplicity="1" />
+          <End Role="Zakaz_Pokypatel" Type="Self.Zakaz_Pokypatel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Edinica_Izmerenia">
+              <PropertyRef Name="Id_Edinic" />
+            </Principal>
+            <Dependent Role="Zakaz_Pokypatel">
+              <PropertyRef Name="Id_Edinic" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Zakaz_Pokypatel_Zakazchiki">
+          <End Role="Zakazchiki" Type="Self.Zakazchiki" Multiplicity="1" />
+          <End Role="Zakaz_Pokypatel" Type="Self.Zakaz_Pokypatel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Zakazchiki">
+              <PropertyRef Name="Id_Zakazchik" />
+            </Principal>
+            <Dependent Role="Zakaz_Pokypatel">
+              <PropertyRef Name="Id_Zakazchika" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Zakazchiki_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Zakazchiki" Type="Self.Zakazchiki" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id_Users" />
+            </Principal>
+            <Dependent Role="Zakazchiki">
+              <PropertyRef Name="Id_Users" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище BurgerPlusModelContainer">
+          <EntitySet Name="Edinica_Izmerenia" EntityType="Self.Edinica_Izmerenia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Price_Materials" EntityType="Self.Price_Materials" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Price_Product" EntityType="Self.Price_Product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Proizvod_Materials" EntityType="Self.Proizvod_Materials" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Proizvod_Product" EntityType="Self.Proizvod_Product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rasschet_Stoimosti_Product" EntityType="Self.Rasschet_Stoimosti_Product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Specifikacia_Materials" EntityType="Self.Specifikacia_Materials" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Specifikacia_Product" EntityType="Self.Specifikacia_Product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Status" EntityType="Self.Status" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Zakaz_Pokypatel" EntityType="Self.Zakaz_Pokypatel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Zakazchiki" EntityType="Self.Zakazchiki" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Price_Materials_Proizvod_Materials" Association="Self.FK_Price_Materials_Proizvod_Materials">
+            <End Role="Proizvod_Materials" EntitySet="Proizvod_Materials" />
+            <End Role="Price_Materials" EntitySet="Price_Materials" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Price_Product_Proizvod_Product" Association="Self.FK_Price_Product_Proizvod_Product">
+            <End Role="Proizvod_Product" EntitySet="Proizvod_Product" />
+            <End Role="Price_Product" EntitySet="Price_Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Proizvod_Materials_Edinica_Izmerenia" Association="Self.FK_Proizvod_Materials_Edinica_Izmerenia">
+            <End Role="Edinica_Izmerenia" EntitySet="Edinica_Izmerenia" />
+            <End Role="Proizvod_Materials" EntitySet="Proizvod_Materials" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Proizvod_Product_Edinica_Izmerenia" Association="Self.FK_Proizvod_Product_Edinica_Izmerenia">
+            <End Role="Edinica_Izmerenia" EntitySet="Edinica_Izmerenia" />
+            <End Role="Proizvod_Product" EntitySet="Proizvod_Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rasschet_Stoimosti_Product_Edinica_Izmerenia" Association="Self.FK_Rasschet_Stoimosti_Product_Edinica_Izmerenia">
+            <End Role="Edinica_Izmerenia" EntitySet="Edinica_Izmerenia" />
+            <End Role="Rasschet_Stoimosti_Product" EntitySet="Rasschet_Stoimosti_Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rasschet_Stoimosti_Product_Proizvod_Materials" Association="Self.FK_Rasschet_Stoimosti_Product_Proizvod_Materials">
+            <End Role="Proizvod_Materials" EntitySet="Proizvod_Materials" />
+            <End Role="Rasschet_Stoimosti_Product" EntitySet="Rasschet_Stoimosti_Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rasschet_Stoimosti_Product_Proizvod_Product" Association="Self.FK_Rasschet_Stoimosti_Product_Proizvod_Product">
+            <End Role="Proizvod_Product" EntitySet="Proizvod_Product" />
+            <End Role="Rasschet_Stoimosti_Product" EntitySet="Rasschet_Stoimosti_Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Specifikacia_Materials_Edinica_Izmerenia" Association="Self.FK_Specifikacia_Materials_Edinica_Izmerenia">
+            <End Role="Edinica_Izmerenia" EntitySet="Edinica_Izmerenia" />
+            <End Role="Specifikacia_Materials" EntitySet="Specifikacia_Materials" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Specifikacia_Materials_Proizvod_Materials" Association="Self.FK_Specifikacia_Materials_Proizvod_Materials">
+            <End Role="Proizvod_Materials" EntitySet="Proizvod_Materials" />
+            <End Role="Specifikacia_Materials" EntitySet="Specifikacia_Materials" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Specifikacia_Materials_Specifikacia_Product" Association="Self.FK_Specifikacia_Materials_Specifikacia_Product">
+            <End Role="Specifikacia_Product" EntitySet="Specifikacia_Product" />
+            <End Role="Specifikacia_Materials" EntitySet="Specifikacia_Materials" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Specifikacia_Product_Proizvod_Product" Association="Self.FK_Specifikacia_Product_Proizvod_Product">
+            <End Role="Proizvod_Product" EntitySet="Proizvod_Product" />
+            <End Role="Specifikacia_Product" EntitySet="Specifikacia_Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_Roles" Association="Self.FK_Users_Roles">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_Status" Association="Self.FK_Users_Status">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Zakaz_Pokypatel_Edinica_Izmerenia" Association="Self.FK_Zakaz_Pokypatel_Edinica_Izmerenia">
+            <End Role="Edinica_Izmerenia" EntitySet="Edinica_Izmerenia" />
+            <End Role="Zakaz_Pokypatel" EntitySet="Zakaz_Pokypatel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Zakaz_Pokypatel_Zakazchiki" Association="Self.FK_Zakaz_Pokypatel_Zakazchiki">
+            <End Role="Zakazchiki" EntitySet="Zakazchiki" />
+            <End Role="Zakaz_Pokypatel" EntitySet="Zakaz_Pokypatel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Zakazchiki_Users" Association="Self.FK_Zakazchiki_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Zakazchiki" EntitySet="Zakazchiki" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BurgerPlusModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Edinica_Izmerenia">
+          <Key>
+            <PropertyRef Name="Id_Edinic" />
+          </Key>
+          <Property Name="Id_Edinic" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Proizvod_Materials" Relationship="Self.FK_Proizvod_Materials_Edinica_Izmerenia" FromRole="Edinica_Izmerenia" ToRole="Proizvod_Materials" />
+          <NavigationProperty Name="Proizvod_Product" Relationship="Self.FK_Proizvod_Product_Edinica_Izmerenia" FromRole="Edinica_Izmerenia" ToRole="Proizvod_Product" />
+          <NavigationProperty Name="Rasschet_Stoimosti_Product" Relationship="Self.FK_Rasschet_Stoimosti_Product_Edinica_Izmerenia" FromRole="Edinica_Izmerenia" ToRole="Rasschet_Stoimosti_Product" />
+          <NavigationProperty Name="Specifikacia_Materials" Relationship="Self.FK_Specifikacia_Materials_Edinica_Izmerenia" FromRole="Edinica_Izmerenia" ToRole="Specifikacia_Materials" />
+          <NavigationProperty Name="Zakaz_Pokypatel" Relationship="Self.FK_Zakaz_Pokypatel_Edinica_Izmerenia" FromRole="Edinica_Izmerenia" ToRole="Zakaz_Pokypatel" />
+        </EntityType>
+        <EntityType Name="Price_Materials">
+          <Key>
+            <PropertyRef Name="Id_Price_Mat" />
+          </Key>
+          <Property Name="Id_Price_Mat" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_ProizvMat" Type="Int32" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <NavigationProperty Name="Proizvod_Materials" Relationship="Self.FK_Price_Materials_Proizvod_Materials" FromRole="Price_Materials" ToRole="Proizvod_Materials" />
+        </EntityType>
+        <EntityType Name="Price_Product">
+          <Key>
+            <PropertyRef Name="Id_Price_Product" />
+          </Key>
+          <Property Name="Id_Price_Product" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_ProizProduct" Type="Int32" Nullable="false" />
+          <Property Name="Cena" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <NavigationProperty Name="Proizvod_Product" Relationship="Self.FK_Price_Product_Proizvod_Product" FromRole="Price_Product" ToRole="Proizvod_Product" />
+        </EntityType>
+        <EntityType Name="Proizvod_Materials">
+          <Key>
+            <PropertyRef Name="Id_ProizvMat" />
+          </Key>
+          <Property Name="Id_ProizvMat" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Kode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Kolichestvo" Type="Double" Nullable="false" />
+          <Property Name="Id_Edinic" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Edinica_Izmerenia" Relationship="Self.FK_Proizvod_Materials_Edinica_Izmerenia" FromRole="Proizvod_Materials" ToRole="Edinica_Izmerenia" />
+          <NavigationProperty Name="Price_Materials" Relationship="Self.FK_Price_Materials_Proizvod_Materials" FromRole="Proizvod_Materials" ToRole="Price_Materials" />
+          <NavigationProperty Name="Rasschet_Stoimosti_Product" Relationship="Self.FK_Rasschet_Stoimosti_Product_Proizvod_Materials" FromRole="Proizvod_Materials" ToRole="Rasschet_Stoimosti_Product" />
+          <NavigationProperty Name="Specifikacia_Materials" Relationship="Self.FK_Specifikacia_Materials_Proizvod_Materials" FromRole="Proizvod_Materials" ToRole="Specifikacia_Materials" />
+        </EntityType>
+        <EntityType Name="Proizvod_Product">
+          <Key>
+            <PropertyRef Name="Id_ProizProduct" />
+          </Key>
+          <Property Name="Id_ProizProduct" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Kode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Kolichestvo" Type="Int32" Nullable="false" />
+          <Property Name="Id_Edinic" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Edinica_Izmerenia" Relationship="Self.FK_Proizvod_Product_Edinica_Izmerenia" FromRole="Proizvod_Product" ToRole="Edinica_Izmerenia" />
+          <NavigationProperty Name="Price_Product" Relationship="Self.FK_Price_Product_Proizvod_Product" FromRole="Proizvod_Product" ToRole="Price_Product" />
+          <NavigationProperty Name="Rasschet_Stoimosti_Product" Relationship="Self.FK_Rasschet_Stoimosti_Product_Proizvod_Product" FromRole="Proizvod_Product" ToRole="Rasschet_Stoimosti_Product" />
+          <NavigationProperty Name="Specifikacia_Product" Relationship="Self.FK_Specifikacia_Product_Proizvod_Product" FromRole="Proizvod_Product" ToRole="Specifikacia_Product" />
+        </EntityType>
+        <EntityType Name="Rasschet_Stoimosti_Product">
+          <Key>
+            <PropertyRef Name="Id_Rasshet" />
+          </Key>
+          <Property Name="Id_Rasshet" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_ProizProduct" Type="Int32" Nullable="false" />
+          <Property Name="Id_ProizvMat" Type="Int32" Nullable="false" />
+          <Property Name="Id_Edinic" Type="Int32" Nullable="false" />
+          <Property Name="Kolichestvo" Type="Double" Nullable="false" />
+          <Property Name="Cena" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Stoimost" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <NavigationProperty Name="Edinica_Izmerenia" Relationship="Self.FK_Rasschet_Stoimosti_Product_Edinica_Izmerenia" FromRole="Rasschet_Stoimosti_Product" ToRole="Edinica_Izmerenia" />
+          <NavigationProperty Name="Proizvod_Materials" Relationship="Self.FK_Rasschet_Stoimosti_Product_Proizvod_Materials" FromRole="Rasschet_Stoimosti_Product" ToRole="Proizvod_Materials" />
+          <NavigationProperty Name="Proizvod_Product" Relationship="Self.FK_Rasschet_Stoimosti_Product_Proizvod_Product" FromRole="Rasschet_Stoimosti_Product" ToRole="Proizvod_Product" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="Id_Role" />
+          </Key>
+          <Property Name="Id_Role" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_Users_Roles" FromRole="Roles" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Specifikacia_Materials">
+          <Key>
+            <PropertyRef Name="Id_SpecMat" />
+          </Key>
+          <Property Name="Id_SpecMat" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_Specifikacia" Type="Int32" Nullable="false" />
+          <Property Name="Id_ProizvMat" Type="Int32" Nullable="false" />
+          <Property Name="Id_Edinic" Type="Int32" Nullable="false" />
+          <Property Name="Kolichestvo" Type="Double" Nullable="false" />
+          <NavigationProperty Name="Edinica_Izmerenia" Relationship="Self.FK_Specifikacia_Materials_Edinica_Izmerenia" FromRole="Specifikacia_Materials" ToRole="Edinica_Izmerenia" />
+          <NavigationProperty Name="Proizvod_Materials" Relationship="Self.FK_Specifikacia_Materials_Proizvod_Materials" FromRole="Specifikacia_Materials" ToRole="Proizvod_Materials" />
+          <NavigationProperty Name="Specifikacia_Product" Relationship="Self.FK_Specifikacia_Materials_Specifikacia_Product" FromRole="Specifikacia_Materials" ToRole="Specifikacia_Product" />
+        </EntityType>
+        <EntityType Name="Specifikacia_Product">
+          <Key>
+            <PropertyRef Name="Id_Specifikacia" />
+          </Key>
+          <Property Name="Id_Specifikacia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_ProizProduct" Type="Int32" Nullable="false" />
+          <Property Name="Cena" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <NavigationProperty Name="Proizvod_Product" Relationship="Self.FK_Specifikacia_Product_Proizvod_Product" FromRole="Specifikacia_Product" ToRole="Proizvod_Product" />
+          <NavigationProperty Name="Specifikacia_Materials" Relationship="Self.FK_Specifikacia_Materials_Specifikacia_Product" FromRole="Specifikacia_Product" ToRole="Specifikacia_Materials" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="Status_Id" />
+          </Key>
+          <Property Name="Status_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_Users_Status" FromRole="Status" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id_Users" />
+          </Key>
+          <Property Name="Id_Users" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_Role" Type="Int32" Nullable="false" />
+          <Property Name="Last_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="First_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Patronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Status_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Roles" Relationship="Self.FK_Users_Roles" FromRole="Users" ToRole="Roles" />
+          <NavigationProperty Name="Status" Relationship="Self.FK_Users_Status" FromRole="Users" ToRole="Status" />
+          <NavigationProperty Name="Zakazchiki" Relationship="Self.FK_Zakazchiki_Users" FromRole="Users" ToRole="Zakazchiki" />
+        </EntityType>
+        <EntityType Name="Zakaz_Pokypatel">
+          <Key>
+            <PropertyRef Name="Id_Zakaz" />
+          </Key>
+          <Property Name="Id_Zakaz" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Kolichestvo" Type="Int32" Nullable="false" />
+          <Property Name="Id_Edinic" Type="Int32" Nullable="false" />
+          <Property Name="Cena" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Summa" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Id_Zakazchika" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Edinica_Izmerenia" Relationship="Self.FK_Zakaz_Pokypatel_Edinica_Izmerenia" FromRole="Zakaz_Pokypatel" ToRole="Edinica_Izmerenia" />
+          <NavigationProperty Name="Zakazchiki" Relationship="Self.FK_Zakaz_Pokypatel_Zakazchiki" FromRole="Zakaz_Pokypatel" ToRole="Zakazchiki" />
+        </EntityType>
+        <EntityType Name="Zakazchiki">
+          <Key>
+            <PropertyRef Name="Id_Zakazchik" />
+          </Key>
+          <Property Name="Id_Zakazchik" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Inn" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Gorod" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Street" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Salesman" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Buyer" Type="Double" Nullable="false" />
+          <Property Name="Id_Users" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_Zakazchiki_Users" FromRole="Zakazchiki" ToRole="Users" />
+          <NavigationProperty Name="Zakaz_Pokypatel" Relationship="Self.FK_Zakaz_Pokypatel_Zakazchiki" FromRole="Zakazchiki" ToRole="Zakaz_Pokypatel" />
+        </EntityType>
+        <Association Name="FK_Proizvod_Materials_Edinica_Izmerenia">
+          <End Role="Edinica_Izmerenia" Type="Self.Edinica_Izmerenia" Multiplicity="1" />
+          <End Role="Proizvod_Materials" Type="Self.Proizvod_Materials" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Edinica_Izmerenia">
+              <PropertyRef Name="Id_Edinic" />
+            </Principal>
+            <Dependent Role="Proizvod_Materials">
+              <PropertyRef Name="Id_Edinic" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Proizvod_Product_Edinica_Izmerenia">
+          <End Role="Edinica_Izmerenia" Type="Self.Edinica_Izmerenia" Multiplicity="1" />
+          <End Role="Proizvod_Product" Type="Self.Proizvod_Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Edinica_Izmerenia">
+              <PropertyRef Name="Id_Edinic" />
+            </Principal>
+            <Dependent Role="Proizvod_Product">
+              <PropertyRef Name="Id_Edinic" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rasschet_Stoimosti_Product_Edinica_Izmerenia">
+          <End Role="Edinica_Izmerenia" Type="Self.Edinica_Izmerenia" Multiplicity="1" />
+          <End Role="Rasschet_Stoimosti_Product" Type="Self.Rasschet_Stoimosti_Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Edinica_Izmerenia">
+              <PropertyRef Name="Id_Edinic" />
+            </Principal>
+            <Dependent Role="Rasschet_Stoimosti_Product">
+              <PropertyRef Name="Id_Edinic" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Specifikacia_Materials_Edinica_Izmerenia">
+          <End Role="Edinica_Izmerenia" Type="Self.Edinica_Izmerenia" Multiplicity="1" />
+          <End Role="Specifikacia_Materials" Type="Self.Specifikacia_Materials" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Edinica_Izmerenia">
+              <PropertyRef Name="Id_Edinic" />
+            </Principal>
+            <Dependent Role="Specifikacia_Materials">
+              <PropertyRef Name="Id_Edinic" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Zakaz_Pokypatel_Edinica_Izmerenia">
+          <End Role="Edinica_Izmerenia" Type="Self.Edinica_Izmerenia" Multiplicity="1" />
+          <End Role="Zakaz_Pokypatel" Type="Self.Zakaz_Pokypatel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Edinica_Izmerenia">
+              <PropertyRef Name="Id_Edinic" />
+            </Principal>
+            <Dependent Role="Zakaz_Pokypatel">
+              <PropertyRef Name="Id_Edinic" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Price_Materials_Proizvod_Materials">
+          <End Role="Proizvod_Materials" Type="Self.Proizvod_Materials" Multiplicity="1" />
+          <End Role="Price_Materials" Type="Self.Price_Materials" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proizvod_Materials">
+              <PropertyRef Name="Id_ProizvMat" />
+            </Principal>
+            <Dependent Role="Price_Materials">
+              <PropertyRef Name="Id_ProizvMat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Price_Product_Proizvod_Product">
+          <End Role="Proizvod_Product" Type="Self.Proizvod_Product" Multiplicity="1" />
+          <End Role="Price_Product" Type="Self.Price_Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proizvod_Product">
+              <PropertyRef Name="Id_ProizProduct" />
+            </Principal>
+            <Dependent Role="Price_Product">
+              <PropertyRef Name="Id_ProizProduct" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rasschet_Stoimosti_Product_Proizvod_Materials">
+          <End Role="Proizvod_Materials" Type="Self.Proizvod_Materials" Multiplicity="1" />
+          <End Role="Rasschet_Stoimosti_Product" Type="Self.Rasschet_Stoimosti_Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proizvod_Materials">
+              <PropertyRef Name="Id_ProizvMat" />
+            </Principal>
+            <Dependent Role="Rasschet_Stoimosti_Product">
+              <PropertyRef Name="Id_ProizvMat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Specifikacia_Materials_Proizvod_Materials">
+          <End Role="Proizvod_Materials" Type="Self.Proizvod_Materials" Multiplicity="1" />
+          <End Role="Specifikacia_Materials" Type="Self.Specifikacia_Materials" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proizvod_Materials">
+              <PropertyRef Name="Id_ProizvMat" />
+            </Principal>
+            <Dependent Role="Specifikacia_Materials">
+              <PropertyRef Name="Id_ProizvMat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rasschet_Stoimosti_Product_Proizvod_Product">
+          <End Role="Proizvod_Product" Type="Self.Proizvod_Product" Multiplicity="1" />
+          <End Role="Rasschet_Stoimosti_Product" Type="Self.Rasschet_Stoimosti_Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proizvod_Product">
+              <PropertyRef Name="Id_ProizProduct" />
+            </Principal>
+            <Dependent Role="Rasschet_Stoimosti_Product">
+              <PropertyRef Name="Id_ProizProduct" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Specifikacia_Product_Proizvod_Product">
+          <End Role="Proizvod_Product" Type="Self.Proizvod_Product" Multiplicity="1" />
+          <End Role="Specifikacia_Product" Type="Self.Specifikacia_Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proizvod_Product">
+              <PropertyRef Name="Id_ProizProduct" />
+            </Principal>
+            <Dependent Role="Specifikacia_Product">
+              <PropertyRef Name="Id_ProizProduct" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_Roles">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="Id_Role" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="Id_Role" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Specifikacia_Materials_Specifikacia_Product">
+          <End Role="Specifikacia_Product" Type="Self.Specifikacia_Product" Multiplicity="1" />
+          <End Role="Specifikacia_Materials" Type="Self.Specifikacia_Materials" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Specifikacia_Product">
+              <PropertyRef Name="Id_Specifikacia" />
+            </Principal>
+            <Dependent Role="Specifikacia_Materials">
+              <PropertyRef Name="Id_Specifikacia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_Status">
+          <End Role="Status" Type="Self.Status" Multiplicity="1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="Status_Id" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="Status_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Zakazchiki_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Zakazchiki" Type="Self.Zakazchiki" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id_Users" />
+            </Principal>
+            <Dependent Role="Zakazchiki">
+              <PropertyRef Name="Id_Users" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Zakaz_Pokypatel_Zakazchiki">
+          <End Role="Zakazchiki" Type="Self.Zakazchiki" Multiplicity="1" />
+          <End Role="Zakaz_Pokypatel" Type="Self.Zakaz_Pokypatel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Zakazchiki">
+              <PropertyRef Name="Id_Zakazchik" />
+            </Principal>
+            <Dependent Role="Zakaz_Pokypatel">
+              <PropertyRef Name="Id_Zakazchika" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BurgerPlusEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Edinica_Izmerenia" EntityType="Self.Edinica_Izmerenia" />
+          <EntitySet Name="Price_Materials" EntityType="Self.Price_Materials" />
+          <EntitySet Name="Price_Product" EntityType="Self.Price_Product" />
+          <EntitySet Name="Proizvod_Materials" EntityType="Self.Proizvod_Materials" />
+          <EntitySet Name="Proizvod_Product" EntityType="Self.Proizvod_Product" />
+          <EntitySet Name="Rasschet_Stoimosti_Product" EntityType="Self.Rasschet_Stoimosti_Product" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" />
+          <EntitySet Name="Specifikacia_Materials" EntityType="Self.Specifikacia_Materials" />
+          <EntitySet Name="Specifikacia_Product" EntityType="Self.Specifikacia_Product" />
+          <EntitySet Name="Status" EntityType="Self.Status" />
+          <EntitySet Name="Users" EntityType="Self.Users" />
+          <EntitySet Name="Zakaz_Pokypatel" EntityType="Self.Zakaz_Pokypatel" />
+          <EntitySet Name="Zakazchiki" EntityType="Self.Zakazchiki" />
+          <AssociationSet Name="FK_Proizvod_Materials_Edinica_Izmerenia" Association="Self.FK_Proizvod_Materials_Edinica_Izmerenia">
+            <End Role="Edinica_Izmerenia" EntitySet="Edinica_Izmerenia" />
+            <End Role="Proizvod_Materials" EntitySet="Proizvod_Materials" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Proizvod_Product_Edinica_Izmerenia" Association="Self.FK_Proizvod_Product_Edinica_Izmerenia">
+            <End Role="Edinica_Izmerenia" EntitySet="Edinica_Izmerenia" />
+            <End Role="Proizvod_Product" EntitySet="Proizvod_Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rasschet_Stoimosti_Product_Edinica_Izmerenia" Association="Self.FK_Rasschet_Stoimosti_Product_Edinica_Izmerenia">
+            <End Role="Edinica_Izmerenia" EntitySet="Edinica_Izmerenia" />
+            <End Role="Rasschet_Stoimosti_Product" EntitySet="Rasschet_Stoimosti_Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Specifikacia_Materials_Edinica_Izmerenia" Association="Self.FK_Specifikacia_Materials_Edinica_Izmerenia">
+            <End Role="Edinica_Izmerenia" EntitySet="Edinica_Izmerenia" />
+            <End Role="Specifikacia_Materials" EntitySet="Specifikacia_Materials" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Zakaz_Pokypatel_Edinica_Izmerenia" Association="Self.FK_Zakaz_Pokypatel_Edinica_Izmerenia">
+            <End Role="Edinica_Izmerenia" EntitySet="Edinica_Izmerenia" />
+            <End Role="Zakaz_Pokypatel" EntitySet="Zakaz_Pokypatel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Price_Materials_Proizvod_Materials" Association="Self.FK_Price_Materials_Proizvod_Materials">
+            <End Role="Proizvod_Materials" EntitySet="Proizvod_Materials" />
+            <End Role="Price_Materials" EntitySet="Price_Materials" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Price_Product_Proizvod_Product" Association="Self.FK_Price_Product_Proizvod_Product">
+            <End Role="Proizvod_Product" EntitySet="Proizvod_Product" />
+            <End Role="Price_Product" EntitySet="Price_Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rasschet_Stoimosti_Product_Proizvod_Materials" Association="Self.FK_Rasschet_Stoimosti_Product_Proizvod_Materials">
+            <End Role="Proizvod_Materials" EntitySet="Proizvod_Materials" />
+            <End Role="Rasschet_Stoimosti_Product" EntitySet="Rasschet_Stoimosti_Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Specifikacia_Materials_Proizvod_Materials" Association="Self.FK_Specifikacia_Materials_Proizvod_Materials">
+            <End Role="Proizvod_Materials" EntitySet="Proizvod_Materials" />
+            <End Role="Specifikacia_Materials" EntitySet="Specifikacia_Materials" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rasschet_Stoimosti_Product_Proizvod_Product" Association="Self.FK_Rasschet_Stoimosti_Product_Proizvod_Product">
+            <End Role="Proizvod_Product" EntitySet="Proizvod_Product" />
+            <End Role="Rasschet_Stoimosti_Product" EntitySet="Rasschet_Stoimosti_Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Specifikacia_Product_Proizvod_Product" Association="Self.FK_Specifikacia_Product_Proizvod_Product">
+            <End Role="Proizvod_Product" EntitySet="Proizvod_Product" />
+            <End Role="Specifikacia_Product" EntitySet="Specifikacia_Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_Roles" Association="Self.FK_Users_Roles">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Specifikacia_Materials_Specifikacia_Product" Association="Self.FK_Specifikacia_Materials_Specifikacia_Product">
+            <End Role="Specifikacia_Product" EntitySet="Specifikacia_Product" />
+            <End Role="Specifikacia_Materials" EntitySet="Specifikacia_Materials" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_Status" Association="Self.FK_Users_Status">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Zakazchiki_Users" Association="Self.FK_Zakazchiki_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Zakazchiki" EntitySet="Zakazchiki" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Zakaz_Pokypatel_Zakazchiki" Association="Self.FK_Zakaz_Pokypatel_Zakazchiki">
+            <End Role="Zakazchiki" EntitySet="Zakazchiki" />
+            <End Role="Zakaz_Pokypatel" EntitySet="Zakaz_Pokypatel" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище BurgerPlusModelContainer" CdmEntityContainer="BurgerPlusEntities1">
+          <EntitySetMapping Name="Edinica_Izmerenia">
+            <EntityTypeMapping TypeName="BurgerPlusModel.Edinica_Izmerenia">
+              <MappingFragment StoreEntitySet="Edinica_Izmerenia">
+                <ScalarProperty Name="Id_Edinic" ColumnName="Id_Edinic" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Price_Materials">
+            <EntityTypeMapping TypeName="BurgerPlusModel.Price_Materials">
+              <MappingFragment StoreEntitySet="Price_Materials">
+                <ScalarProperty Name="Id_Price_Mat" ColumnName="Id_Price_Mat" />
+                <ScalarProperty Name="Id_ProizvMat" ColumnName="Id_ProizvMat" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Price_Product">
+            <EntityTypeMapping TypeName="BurgerPlusModel.Price_Product">
+              <MappingFragment StoreEntitySet="Price_Product">
+                <ScalarProperty Name="Id_Price_Product" ColumnName="Id_Price_Product" />
+                <ScalarProperty Name="Id_ProizProduct" ColumnName="Id_ProizProduct" />
+                <ScalarProperty Name="Cena" ColumnName="Cena" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Proizvod_Materials">
+            <EntityTypeMapping TypeName="BurgerPlusModel.Proizvod_Materials">
+              <MappingFragment StoreEntitySet="Proizvod_Materials">
+                <ScalarProperty Name="Id_ProizvMat" ColumnName="Id_ProizvMat" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Kode" ColumnName="Kode" />
+                <ScalarProperty Name="Kolichestvo" ColumnName="Kolichestvo" />
+                <ScalarProperty Name="Id_Edinic" ColumnName="Id_Edinic" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Proizvod_Product">
+            <EntityTypeMapping TypeName="BurgerPlusModel.Proizvod_Product">
+              <MappingFragment StoreEntitySet="Proizvod_Product">
+                <ScalarProperty Name="Id_ProizProduct" ColumnName="Id_ProizProduct" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Kode" ColumnName="Kode" />
+                <ScalarProperty Name="Kolichestvo" ColumnName="Kolichestvo" />
+                <ScalarProperty Name="Id_Edinic" ColumnName="Id_Edinic" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rasschet_Stoimosti_Product">
+            <EntityTypeMapping TypeName="BurgerPlusModel.Rasschet_Stoimosti_Product">
+              <MappingFragment StoreEntitySet="Rasschet_Stoimosti_Product">
+                <ScalarProperty Name="Id_Rasshet" ColumnName="Id_Rasshet" />
+                <ScalarProperty Name="Id_ProizProduct" ColumnName="Id_ProizProduct" />
+                <ScalarProperty Name="Id_ProizvMat" ColumnName="Id_ProizvMat" />
+                <ScalarProperty Name="Id_Edinic" ColumnName="Id_Edinic" />
+                <ScalarProperty Name="Kolichestvo" ColumnName="Kolichestvo" />
+                <ScalarProperty Name="Cena" ColumnName="Cena" />
+                <ScalarProperty Name="Stoimost" ColumnName="Stoimost" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="BurgerPlusModel.Roles">
+              <MappingFragment StoreEntitySet="Roles">
+                <ScalarProperty Name="Id_Role" ColumnName="Id_Role" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Specifikacia_Materials">
+            <EntityTypeMapping TypeName="BurgerPlusModel.Specifikacia_Materials">
+              <MappingFragment StoreEntitySet="Specifikacia_Materials">
+                <ScalarProperty Name="Id_SpecMat" ColumnName="Id_SpecMat" />
+                <ScalarProperty Name="Id_Specifikacia" ColumnName="Id_Specifikacia" />
+                <ScalarProperty Name="Id_ProizvMat" ColumnName="Id_ProizvMat" />
+                <ScalarProperty Name="Id_Edinic" ColumnName="Id_Edinic" />
+                <ScalarProperty Name="Kolichestvo" ColumnName="Kolichestvo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Specifikacia_Product">
+            <EntityTypeMapping TypeName="BurgerPlusModel.Specifikacia_Product">
+              <MappingFragment StoreEntitySet="Specifikacia_Product">
+                <ScalarProperty Name="Id_Specifikacia" ColumnName="Id_Specifikacia" />
+                <ScalarProperty Name="Id_ProizProduct" ColumnName="Id_ProizProduct" />
+                <ScalarProperty Name="Cena" ColumnName="Cena" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Status">
+            <EntityTypeMapping TypeName="BurgerPlusModel.Status">
+              <MappingFragment StoreEntitySet="Status">
+                <ScalarProperty Name="Status_Id" ColumnName="Status_Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="BurgerPlusModel.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="Id_Users" ColumnName="Id_Users" />
+                <ScalarProperty Name="Id_Role" ColumnName="Id_Role" />
+                <ScalarProperty Name="Last_Name" ColumnName="Last_Name" />
+                <ScalarProperty Name="First_Name" ColumnName="First_Name" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
+                <ScalarProperty Name="Status_Id" ColumnName="Status_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Zakaz_Pokypatel">
+            <EntityTypeMapping TypeName="BurgerPlusModel.Zakaz_Pokypatel">
+              <MappingFragment StoreEntitySet="Zakaz_Pokypatel">
+                <ScalarProperty Name="Id_Zakaz" ColumnName="Id_Zakaz" />
+                <ScalarProperty Name="Kolichestvo" ColumnName="Kolichestvo" />
+                <ScalarProperty Name="Id_Edinic" ColumnName="Id_Edinic" />
+                <ScalarProperty Name="Cena" ColumnName="Cena" />
+                <ScalarProperty Name="Summa" ColumnName="Summa" />
+                <ScalarProperty Name="Id_Zakazchika" ColumnName="Id_Zakazchika" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Zakazchiki">
+            <EntityTypeMapping TypeName="BurgerPlusModel.Zakazchiki">
+              <MappingFragment StoreEntitySet="Zakazchiki">
+                <ScalarProperty Name="Id_Zakazchik" ColumnName="Id_Zakazchik" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Inn" ColumnName="Inn" />
+                <ScalarProperty Name="Gorod" ColumnName="Gorod" />
+                <ScalarProperty Name="Street" ColumnName="Street" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Salesman" ColumnName="Salesman" />
+                <ScalarProperty Name="Buyer" ColumnName="Buyer" />
+                <ScalarProperty Name="Id_Users" ColumnName="Id_Users" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

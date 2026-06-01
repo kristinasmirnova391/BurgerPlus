@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ab7efbc1a822454a978227f6302d9969" Name="Diagram1">
+        <EntityTypeShape EntityType="BurgerPlusModel.Edinica_Izmerenia" Width="1.5" PointX="0.75" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BurgerPlusModel.Price_Materials" Width="1.5" PointX="5.25" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BurgerPlusModel.Price_Product" Width="1.5" PointX="5.25" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BurgerPlusModel.Proizvod_Materials" Width="1.5" PointX="3" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BurgerPlusModel.Proizvod_Product" Width="1.5" PointX="3" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BurgerPlusModel.Rasschet_Stoimosti_Product" Width="1.5" PointX="8.25" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BurgerPlusModel.Roles" Width="1.5" PointX="1.25" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BurgerPlusModel.Specifikacia_Materials" Width="1.5" PointX="10.5" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BurgerPlusModel.Specifikacia_Product" Width="1.5" PointX="5.25" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BurgerPlusModel.Status" Width="1.5" PointX="1.25" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BurgerPlusModel.Users" Width="1.5" PointX="3.5" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BurgerPlusModel.Zakaz_Pokypatel" Width="1.5" PointX="8" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BurgerPlusModel.Zakazchiki" Width="1.5" PointX="5.75" PointY="1.75" IsExpanded="true" />
+        <AssociationConnector Association="BurgerPlusModel.FK_Proizvod_Materials_Edinica_Izmerenia" ManuallyRouted="false" />
+        <AssociationConnector Association="BurgerPlusModel.FK_Proizvod_Product_Edinica_Izmerenia" ManuallyRouted="false" />
+        <AssociationConnector Association="BurgerPlusModel.FK_Rasschet_Stoimosti_Product_Edinica_Izmerenia" ManuallyRouted="false" />
+        <AssociationConnector Association="BurgerPlusModel.FK_Specifikacia_Materials_Edinica_Izmerenia" ManuallyRouted="false" />
+        <AssociationConnector Association="BurgerPlusModel.FK_Zakaz_Pokypatel_Edinica_Izmerenia" ManuallyRouted="false" />
+        <AssociationConnector Association="BurgerPlusModel.FK_Price_Materials_Proizvod_Materials" ManuallyRouted="false" />
+        <AssociationConnector Association="BurgerPlusModel.FK_Price_Product_Proizvod_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="BurgerPlusModel.FK_Rasschet_Stoimosti_Product_Proizvod_Materials" ManuallyRouted="false" />
+        <AssociationConnector Association="BurgerPlusModel.FK_Specifikacia_Materials_Proizvod_Materials" ManuallyRouted="false" />
+        <AssociationConnector Association="BurgerPlusModel.FK_Rasschet_Stoimosti_Product_Proizvod_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="BurgerPlusModel.FK_Specifikacia_Product_Proizvod_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="BurgerPlusModel.FK_Users_Roles" ManuallyRouted="false" />
+        <AssociationConnector Association="BurgerPlusModel.FK_Specifikacia_Materials_Specifikacia_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="BurgerPlusModel.FK_Users_Status" ManuallyRouted="false" />
+        <AssociationConnector Association="BurgerPlusModel.FK_Zakazchiki_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="BurgerPlusModel.FK_Zakaz_Pokypatel_Zakazchiki" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
